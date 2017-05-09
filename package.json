@@ -1,0 +1,22 @@
+{
+  "name": "inverted-index-client",
+  "version": "1.0.0",
+  "description": "Client side interface for inverted-index app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayodelevm/inverted-index-client.git"
+  },
+  "keywords": [
+    "inverted-index"
+  ],
+  "author": "Ayodele Victor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayodelevm/inverted-index-client/issues"
+  },
+  "homepage": "https://github.com/ayodelevm/inverted-index-client#readme"
+}
