@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html ng-app="InvertedIndex">
+  <head>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-shim.min.js"></script>
+
+    <script src="./app.js"></script>
+    <script src="./Services/IndexSvc.js"></script>
+    <script src="./Controllers/IndexCtrl.js"></script>
+  </head>
+  <body ng-controller="IndexController">
+    <div class="container">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">I-Index</a>
+          </div>
+        </div>
+      </nav>
+      <div class="jumbotron text-center col-lg-6">
+        <h1>Inverted Index App</h1>
+        <p>Create and Search Index efficiently!</p> 
+      </div>
+
+        <div class="container col-lg-3">
+          <form name="createSearch">
+
+          <div class="col-sm-12">
+            <h3>Upload Files</h3>
+                <span id="fileselector">
+                  <label class="btn btn-default" for="upload-file-selector" >
+                    <input id="upload-file-selector" type="file" ngf-select ng-model="files" ngf-multiple="true">
+                  </label>
+                </span>
+          </div>
+
+          <div class="col-sm-12">
+            <h3>Create Index</h3>
+            <button class="btn btn-primary btn-block" type="button" ng-click="createIndex()">Go!</button>
+          </div>
+
+          <div class="col-sm-12">
+            <h3>Search Index</h3> 
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for..." ng-model="searchQuery">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">Go!</button>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+
+      </form>
+      </div>
+
+      <div class="container col-lg-3">
+        <h3>Uploaded files</h3>
+        <p></p>
+      </div>
+      <hr>
+
+      <div class="table-responsive col-lg-12">
+        <table class="table table-hover">
+
+        <thead ng-repeat="name in filename">
+        <h3>{{name}}</h3>
+          <tr>
+            <th>Words</th>
+            <th>Object 1</th>
+            <th>Object 2</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="key in keys">
+            <td>{{key}}</td>
+            <td>{{invertedIndex[key].indexOf(0) !== -1 ? 'x' : 'o'}}</td>
+            <td>{{invertedIndex[key].indexOf(1) !== -1 ? 'x' : 'o'}}</td>
+          </tr>
+        </tbody>
+
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
